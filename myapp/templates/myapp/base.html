@@ -4,7 +4,13 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>ISF Riddler</title>
+  <link rel="stylesheet" href="{% static 'css/colorpicker.css' %}" type="text/css" />
+  <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/colorpicker.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/eye.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/utils.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/layout.js' %}"></script>
+    <title>ISF/place</title>
 
     <!-- Bootstrap 5 -->
     {% load bootstrap5 %}
@@ -21,6 +27,8 @@
 <body>
 
   <div class="container">
+    <p>hi</p>
+    <p id="colorpickerHolder"></p>
 
     {% block content %}
     {% endblock %}

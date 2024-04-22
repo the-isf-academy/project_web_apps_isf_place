@@ -7,4 +7,3 @@ from django.utils import timezone
 
 class IndexView(TemplateView):
     template_name = "myapp/index.html"
-
