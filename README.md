@@ -1,17 +1,21 @@
-# Project Web Apps
+<style>
+blockquote {
+    border-left: 5px solid #cdb0ee;
+}
+</style>
 
-**Group Members:** 
-
-
-## Web App Description
-*Your description goes here*
-
----
-
-## Works Cited
-
-> Use this section to  keep track of the resources you reference. You must include a link with a short description of how you used it. 
-
-- [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - center content and create structure to the site
-- [google search bar](https://codepen.io/eqbrown/pen/XWBvvjE) - used the css properties for the pill design
-- [bootstrap documentation](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+> # <ins>__**Ethan & Brandon CS10 Project Webapps:**__ <ins>
+> CS10 2023-2024 Unit 3.
+> 
+> ## Web App Description:
+>> We aim to create an interactive and collaborative community pixelart project that rewards top houses with housetickets given the amount of blocks each house place. Users can add "pixels" to a "canvas" as their house to increase their house's total amount of pixels, competing while creating. 
+>
+>
+> ## Works Cited
+>> - [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - center content and create structure to the site
+>> - [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - center content and create structure to the site
+>> - [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - center content and create structure to the site
+>> - [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - center content and create structure to the site
+>> - [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - center content and create structure to the site
+> 
+> <br>
