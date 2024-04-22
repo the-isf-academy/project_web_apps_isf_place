@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "project_web_apps"
+version = "0.1.0"
+description = ""
+authors = ["emma <eqbrown@isf.edu.hk>"]
+readme = "README.md"
+packages = [{include = "riddle_site"}]
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+Django = "^4.1.7"
+django-bootstrap-v5 = "^1.0.11"
+fuzzywuzzy = "^0.18.0"
+django-cloudinary-storage = "^0.3.0"
+cloudinary = "^1.32.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
