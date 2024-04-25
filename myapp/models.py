@@ -4,5 +4,7 @@ from django.db import models
 class Tiles(models.Model):
     x_coordinates = models.IntegerField()
     y_coordinates = models.IntegerField()
-    color = models.CharField(max_length=1)
+    r = models.IntegerField()
+    g = models.IntegerField()
+    b = models.IntegerField()
     house = models.CharField(max_length=1)
