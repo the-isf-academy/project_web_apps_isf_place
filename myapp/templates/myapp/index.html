@@ -2,34 +2,23 @@
 
 {% block content %}
 <style>
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-.square {
-  width: 100px;
-  height: 100px;
-  background-color: rgb(241, 10, 10); /* Initial background color */
-  border: 1px solid black;
-}
-</style>
-<script>
-    function changeColor(element) {
-      const colors = ['rgb(241, 10, 10)', 'rgb(10, 241, 16)', 'rgb(16, 16, 241)', 'rgb(241, 241, 16)']; // Add more colors if you want
-      const currentColor = element.style.backgroundColor;
-      const index = (colors.indexOf(currentColor) + 1) % colors.length;
-      element.style.backgroundColor = colors[index];
-    }
-</script>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(100, 1fr);
+  }
+  .square {
+    width: 25px;
+    height: 25px;
+    background-color: rgb(241, 10, 10); /* Initial background color */
+    border: 1px solid black; /* Add this line */
+  }
+  </style>
 <h1>My App</h1>
 <p id="colorpickerHolder"></p>
 <div class="grid">
-  {% for x in num_tiles %}
-    {% for y in num_tiles %}
-      {% with tile=Tiles.objects.get(x_coordinates=x, y_coordinates=y) %}
-        <div class="square" style="background-color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }});"></div>
-      {% endwith %}
+  {% for row in grid %}
+    {% for tile in row %}
+      <div class="square" style="background-color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }})"></div>
     {% endfor %}
   {% endfor %}
 </div>

@@ -22,8 +22,8 @@ body{
 
 
 .square {
-    width: 100px;
-    height: 100px;
-    background-color: #f10a0a; /* Change this to your desired background color */
+    width: 50px;  /* adjust as needed */
+    height: 50px;  /* adjust as needed */
     border: 1px solid black;
-  }
+    margin: 5px;  /* adjust as needed */
+}
