@@ -12,3 +12,10 @@ def index(request):
             row.append(tile)
         grid.append(row)
     return render(request, 'myapp/index.html', {'grid': grid})
+
+
+def leaderboard(request):
+
+
+    
+    return render(request, 'myapp/leaderboard.html',)
