@@ -1,7 +1,25 @@
-{% extends "myapp/leaderboard.html" %}
-
-{% block content %}
-
-<h1>Leaderboard</h1>
-
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/leaderboard.js' %}"></script>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    <!-- Add the leaderboard content here -->
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Player</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add leaderboard entries dynamically using Django template tags or JavaScript -->
+        </tbody>
+    </table>
+</body>
+</html>

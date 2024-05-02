@@ -1,26 +1,25 @@
-{% extends "myapp/base.html" %}
-
-{% block content %}
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(100, 1fr);
-  }
-  .square {
-    width: 25px;
-    height: 25px;
-    background-color: rgb(241, 10, 10); /* Initial background color */
-    border: 1px solid black; /* Add this line */
-  }
-  </style>
-<h1>My App</h1>
-<p id="colorpickerHolder"></p>
-<div class="grid">
-  {% for row in grid %}
-    {% for tile in row %}
-      <div class="square" style="background-color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }})"></div>
-    {% endfor %}
-  {% endfor %}
-</div>
-
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/colorpicker.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/colorpicker.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+</head>
+<body>
+    <h1>Welcome to the Index Page</h1>
+    <div class="grid">
+        {% for row in grid %}
+            <div class="row">
+                {% for tile in row %}
+                    <div class="square" style="background-color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }});"></div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+    <!-- Add any additional HTML content for the index page -->
+</body>
+</html>
