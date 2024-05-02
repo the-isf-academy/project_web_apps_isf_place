@@ -13,6 +13,14 @@
           });
       });
   };
+  console.log("Hi");
+  var rgb = {
+    r: $(cal).data('colorpicker').fields.eq(1).val(),
+    g: $(cal).data('colorpicker').fields.eq(2).val(),
+    b: $(cal).data('colorpicker').fields.eq(3).val()
+};
+console.log("Hi");
+document.getElementById('rgbValues').textContent = 'Red: ' + rgb.r + ', Green: ' + rgb.g + ', Blue: ' + rgb.b;
   </script>
 
 <style>
@@ -42,19 +50,10 @@
     {% for tile in row %}
     <div class="square" style="background-color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }})"></div>
     {% endfor %}
+    {% endfor %}
 </div>
 
 <a href="{% url 'myapp:leaderboard' %}">View Leaderboard</a>
 
-{% endblock %}
-<script>
-  var rgb = {
-    r: $(cal).data('colorpicker').fields.eq(1).val(),
-    g: $(cal).data('colorpicker').fields.eq(2).val(),
-    b: $(cal).data('colorpicker').fields.eq(3).val()
-};
-console.log("Hi");
-document.getElementById('rgbValues').textContent = 'Red: ' + rgb.r + ', Green: ' + rgb.g + ', Blue: ' + rgb.b;
-</script>
 <p id="rgbValues"></p>
 {% endblock %}
