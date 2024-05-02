@@ -1,12 +1,9 @@
 from django.urls import path
-
 from . import views
 
 app_name = "myapp"
-
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('', views.leaderboard, name='leaderboards')
+    path('', views.loading, name='loading'),
+    path('home/', views.index, name='home'),
+    path('leaderboard/', views.leaderboard, name='leaderboard'),
 ]
-
-

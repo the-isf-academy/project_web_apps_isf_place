@@ -5,6 +5,13 @@
     <title>Loading</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/loading.js' %}"></script>
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                window.location.href = "{% url 'myapp:home' %}";
+            }, 2000); // Delay for 2 seconds (adjust as needed)
+        };
+    </script>
 </head>
 <body>
     <h1>Loading...</h1>

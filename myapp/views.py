@@ -1,12 +1,18 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
-from django.utils import timezone
+from django.shortcuts import render, redirect
 from .models import Tiles
 
+def loading(request):
+    return render(request, 'myapp/loading.html')
+
 def index(request):
-    tiles = list(Tiles.objects.all())
-    grid = [tiles[i:i+100] for i in range(0, len(tiles), 100)]
+    grid = []
+    for x in range(1, 101):
+        row = []
+        for y in range(1, 101):
+            tile = Tiles.objects.filter(id=(x-1)*100+y).first()
+            row.append(tile)
+        grid.append(row)
     return render(request, 'myapp/index.html', {'grid': grid})
 
 def leaderboard(request):
-    return render(request, 'myapp/leaderboard.html',)
+    return render(request, 'myapp/leaderboard.html')
