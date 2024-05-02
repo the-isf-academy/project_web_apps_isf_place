@@ -1,25 +1,62 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Index</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/colorpicker.css' %}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{% static 'js/colorpicker.js' %}"></script>
-    <script src="{% static 'js/index.js' %}"></script>
-</head>
-<body>
-    <h1>Welcome to the Index Page</h1>
-    <div class="grid">
-        {% for row in grid %}
-            <div class="row">
-                {% for tile in row %}
-                    <div class="square" style="background-color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }});"></div>
-                {% endfor %}
-            </div>
-        {% endfor %}
-    </div>
-    <!-- Add any additional HTML content for the index page -->
-</body>
-</html>
+{% extends "myapp/base.html" %}
+
+{% block content %}
+<script>
+  window.onload = function() {
+      var squares = document.querySelectorAll('.square');
+      var colorpickerHolder = document.getElementById('colorpickerHolder');
+  
+      squares.forEach(function(square) {
+          square.addEventListener('click', function() {
+              colorpickerHolder.style.display = 'block';
+          });
+      });
+  };
+  </script>
+
+<style>
+  #colorpickerHolder {
+    display: none;
+  }
+  </style>
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(165, 1fr);
+  }
+  .square {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(241, 10, 10); /* Initial background color */
+    border: 1px solid black; /* Add this line */
+  }
+#colorpickerHolder {
+  display: none;
+}
+  </style>
+
+<script>
+  $(document).ready(function() {
+    var cal = $('#colorpickerHolder');
+    var rgb = {
+      r: $(cal).data('colorpicker').fields.eq(1).val(),
+      g: $(cal).data('colorpicker').fields.eq(2).val(),
+      b: $(cal).data('colorpicker').fields.eq(3).val()
+    };
+    document.getElementById('redValue').textContent = 'Red: ' + rgb.r;
+    document.getElementById('greenValue').textContent = 'Green: ' + rgb.g;
+    document.getElementById('blueValue').textContent = 'Blue: ' + rgb.b;
+  });
+  </script>
+<h1>My App</h1>
+<p id="redValue"></p>
+<p id="colorpickerHolder"></p>
+<div class="grid">
+  {% for row in grid %}
+    {% for tile in row %}
+    <div class="square" style="background-color: rgb({{ redValue }}, {{ greenValue }}, {{ blueValue }})"></div>
+    {% endfor %}
+  {% endfor %}
+</div>
+
+{% endblock %}
