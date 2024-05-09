@@ -1002,7 +1002,8 @@
     settings.a11y.close + "\">" + settings.closeLabel + "</button>") +
     '</div>' + ("<span id=\"clr-open-label\" hidden>" +
     settings.a11y.open + "</span>") + ("<span id=\"clr-swatch-label\" hidden>" +
-    settings.a11y.swatch + "</span>");
+    settings.a11y.swatch + "</span>") +
+    '<a>';
 
     // Append the color picker to the DOM
     document.body.appendChild(picker);
