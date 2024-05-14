@@ -17,7 +17,24 @@ def index(request):
 def leaderboard(request):
     return render(request, 'myapp/leaderboard.html')
 
-def change_rgb(request, pk, r, g, b):
-    tile = Tiles.objects.filter(id=pk).first()
-    tile.changergb(r, g, b)
-    return redirect('myapp:home')
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+
+@csrf_exempt
+def update_color(request, pk):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        r = data.get('r')
+        g = data.get('g')
+        b = data.get('b')
+
+        # Update the color data in the database
+        # Assuming you have a Tile object to update
+        tile = Tiles.objects.get(id=pk)  # Replace with your own query
+        tile.r = r
+        tile.g = g
+        tile.b = b
+        tile.save()
+
+        return JsonResponse({'status': 'success'})

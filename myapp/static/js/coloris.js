@@ -482,19 +482,63 @@
     }
   }
 
-  /**
-   * Update the color preview of an input field
-   * @param {object} event The "input" event that triggers the color change.
-   */
-  function updateColorPreview(event) {
-    var parent = event.target.parentNode;
+/**
+ * Update the color preview of an input field
+ * @param {object} event The "input" event that triggers the color change.
+ */
+function updateColorPreview(event) {
+  var parent = event.target.parentNode;
 
-    // Only update the preview if the field has been previously wrapped
-    if (parent.classList.contains('clr-field')) {
-      parent.style.color = event.target.value;
+  // Only update the preview if the field has been previously wrapped
+  if (parent.classList.contains('clr-field')) {
+    parent.style.color = event.target.value;
+
+    // Get the color value
+    var color = parent.style.color;
+
+    // Create a new div
+    var div = document.createElement('div');
+
+    // Set the div's text content to the color value
+    div.textContent = color;
+
+    // Append the div to the body
+    document.body.appendChild(div);
+
+    // Parse the RGB color value
+    var rgb = color.match(/\d+/g);
+
+    // Send the new color data to the server
+    fetch(`/myapp/update-color/${pk}/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken')  // Get the CSRF token
+      },
+      body: JSON.stringify({
+        r: Number(rgb[0]),
+        g: Number(rgb[1]),
+        b: Number(rgb[2])
+      })
+    });
+  }
+}
+
+// Function to get a cookie by name
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
     }
   }
-
+  return cookieValue;
+}
   /**
    * Close the color picker.
    * @param {boolean} [revert] If true, revert the color to the original value.

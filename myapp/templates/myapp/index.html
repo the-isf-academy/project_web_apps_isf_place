@@ -20,17 +20,33 @@
     width: 24px;
     height: 24px;
   }
-</style>
-
+  .save-button {
+  z-index: 1000;
+}
+  </style>
 <h1>My App</h1>
+<p>save</p>
 <div class="grid">
   {% for row in grid %}
     {% for tile in row %}
-      <div class="clr-field" style="color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }});">
-        <button type="button" aria-labelledby="clr-open-label"></button>
-        <input class="hidden-input" type="text" value="rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }})" data-coloris>
-      </div>
+    <div class="clr-field" style="color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }});">
+      <button type="button" aria-labelledby="clr-open-label"></button>
+      <input class="hidden-input" type="text" value="rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }})" data-coloris="">
+      <button class="save-button" type="button">Save</button>
+    </div>
+    {% endfor %}
     {% endfor %}
   {% endfor %}
 </div>
+<input type="color" id="colorInput" class="clr-field" value="#ff0000">
+<script>
+  // Get the color input element
+  var colorInput = document.getElementById('colorInput');
+
+  // Add an input event listener to the color input
+  colorInput.addEventListener('input', updateColorPreview);
+</script>
+
+<a href="{% url 'myapp:leaderboard' %}">View Leaderboard</a>
+
 {% endblock %}

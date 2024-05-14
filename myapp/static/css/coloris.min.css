@@ -326,6 +326,8 @@ input.clr-color:focus {
     display: inline-block;
     position: relative;
     color: transparent;
+    width: 24px;
+    height: 24px;
 }
 
 .clr-field input {
