@@ -1,25 +1,78 @@
+{% extends "myapp/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Leaderboard</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <script src="{% static 'js/leaderboard.js' %}"></script>
-</head>
-<body>
-    <h1>Leaderboard</h1>
-    <!-- Add the leaderboard content here -->
-    <table>
-        <thead>
-            <tr>
-                <th>Rank</th>
-                <th>Player</th>
-                <th>Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Add leaderboard entries dynamically using Django template tags or JavaScript -->
-        </tbody>
-    </table>
-</body>
-</html>
+
+{% block content %}
+<style>
+  .leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+    margin: 10vh auto 0;
+    border: 4px solid #1E90FF;
+    border-radius: 20px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fade-in 2s ease forwards;
+  }
+
+  .leaderboard-banner {
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .leaderboard-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(4px);
+  }
+
+  .leaderboard-banner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .leaderboard-banner h1 {
+    position: absolute;
+    color: white;
+    font-size: 48px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    z-index: 1;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+</style>
+
+<div class="leaderboard-container">
+  <div class="leaderboard-banner">
+    <img src="{% static '/images/bannerlb.jpg' %}" alt="Leaderboard Banner">
+    <h1>House Leaderboards</h1>
+  </div>
+  <!-- Add any additional leaderboard content here -->
+</div>
+{% endblock %}

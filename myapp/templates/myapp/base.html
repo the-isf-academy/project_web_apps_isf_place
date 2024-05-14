@@ -1,8 +1,6 @@
 {% load static %}
-
 <!doctype html>
 <html lang="en" class="h-100">
-
 <head>
   <link rel="stylesheet" href="{% static 'css/coloris.min.css' %}" type="text/css" />
   <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
@@ -10,30 +8,85 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="{% static 'js/index.js' %}"></script>
-    <title>ISF/place</title>
+  <title>ISF/place</title>
+  <!-- Bootstrap 5 -->
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  <style>
+    .navbar {
+      background-color: navy;
+      height: 5vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      border-bottom: 4px solid #1E90FF;
+      animation: dropdown 0.5s ease forwards;
+    }
 
-    <!-- Bootstrap 5 -->
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type ="text/css" href="{% static 'style.css' %}">
-    
-    <!-- <link rel="icon" href="{% static "color_app/favicon.png" %}"> -->
+    .navbar-link {
+      text-decoration: none;
+      margin-right: 20px;
+    }
 
+    .leaderboard-link {
+      font-style: italic;
+      color: #fff;
+      font-family: 'Arimo', sans-serif;
+    }
+
+    .navbar-button {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-button:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes dropdown {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="{% url 'myapp:leaderboard' %}" class="navbar-link leaderboard-link">
+        <button class="navbar-button leaderboard-button">Leaderboards</button>
+      </a>
+      <a href="{% url 'myapp:home' %}" class="navbar-link home-link">
+        <button class="navbar-button home-button">Home</button>
+      </a>
+    </div>
+    <div class="navbar-right">
+      <a href="#" class="navbar-link about-link">
+        <button class="navbar-button about-button">About Me</button>
+      </a>
+    </div>
+  </nav>
   <div class="container">
-
     {% block content %}
     {% endblock %}
-
   </div>
-
 </body>
-
 </html>
-

@@ -7,31 +7,30 @@
     display: grid;
     grid-template-columns: repeat(40, 1fr);
   }
+
   .square {
     width: 10px;
     height: 10px;
-    background-color: rgb(241, 10, 10); /* Initial background color */
-    border: 1px solid black; /* Add this line */
+    background-color: rgb(241, 10, 10);
+    border: 1px solid black;
   }
-  
+
   .hidden-input {
     color: transparent;
-    width: 24px; /* Change this line */
+    width: 24px;
     height: 24px;
   }
-  </style>
+</style>
+
 <h1>My App</h1>
 <div class="grid">
   {% for row in grid %}
     {% for tile in row %}
-    <div class="clr-field" style="color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }});">
-      <button type="button" aria-labelledby="clr-open-label"></button>
-      <input class="hidden-input" type="text" value="rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }})" data-coloris="">
-    </div>
+      <div class="clr-field" style="color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }});">
+        <button type="button" aria-labelledby="clr-open-label"></button>
+        <input class="hidden-input" type="text" value="rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }})" data-coloris>
+      </div>
     {% endfor %}
-    {% endfor %}
+  {% endfor %}
 </div>
-
-<!-- <a href="{% url 'myapp:leaderboard' %}">View Leaderboard</a> -->
-
 {% endblock %}
