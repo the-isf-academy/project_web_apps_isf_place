@@ -9,11 +9,10 @@ def index(request):
     for x in range(1, 21):  # Change this line
         row = []
         for y in range(1, 21):  # Change this line
-            tile = Tiles.objects.filter(id=(x-1)*10+y).first()  # Change this line
+            tile = Tiles.objects.filter(id=(x-1)*20+y).first()
             row.append(tile)
         grid.append(row)
     return render(request, 'myapp/index.html', {'grid': grid})
-
 def leaderboard(request):
     return render(request, 'myapp/leaderboard.html')
 
@@ -23,6 +22,7 @@ import json
 
 @csrf_exempt
 def update_color(request, pk):
+    print("updated_color")
     if request.method == 'POST':
         data = json.loads(request.body)
         r = data.get('r')

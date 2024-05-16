@@ -3,7 +3,6 @@
  * Licensed under the MIT License (MIT)
  * https://github.com/mdbassit/Coloris
  */
-
 (function (window, document, Math, undefined) {
   var ctx = document.createElement('canvas').getContext('2d');
   var currentColor = { r: 0, g: 0, b: 0, h: 0, s: 0, v: 0, a: 1 };
@@ -236,6 +235,7 @@
 
     }
   }
+
 
   /**
    * Add or update a virtual instance.
@@ -508,8 +508,11 @@ function updateColorPreview(event) {
     // Parse the RGB color value
     var rgb = color.match(/\d+/g);
 
+    var element = document.querySelector('.clr-field');
+    var id = element.dataset.id;
+
     // Send the new color data to the server
-    fetch(`/myapp/update-color/${pk}/`, {
+    fetch(`/update-color/${id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
