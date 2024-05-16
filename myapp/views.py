@@ -3,7 +3,7 @@ from .models import Tiles
 
 def loading(request):
     return render(request, 'myapp/loading.html')
-
+# Change how this is sent to the html. Should send all objects!
 def index(request):
     grid = []
     for x in range(1, 21):  # Change this line
