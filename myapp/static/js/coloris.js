@@ -507,10 +507,10 @@ function updateColorPreview(event) {
 
     // Parse the RGB color value
     var rgb = color.match(/\d+/g);
-
-    var element = document.querySelector('.clr-field');
-    var id = element.dataset.id;
-
+    console.log(document.getElementById("tile_id").value)
+    // var element = document.getElementById("tile_id").value;
+    var id = 1;
+    // var id = element.dataset.id;
     // Send the new color data to the server
     fetch(`/update-color/${id}`, {
       method: 'POST',

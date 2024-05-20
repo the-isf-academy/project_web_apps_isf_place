@@ -5,13 +5,7 @@ def loading(request):
     return render(request, 'myapp/loading.html')
 # Change how this is sent to the html. Should send all objects!
 def index(request):
-    grid = []
-    for x in range(1, 21):  # Change this line
-        row = []
-        for y in range(1, 21):  # Change this line
-            tile = Tiles.objects.filter(id=(x-1)*20+y).first()
-            row.append(tile)
-        grid.append(row)
+    grid = Tiles.objects.all()
     return render(request, 'myapp/index.html', {'grid': grid})
 def leaderboard(request):
     return render(request, 'myapp/leaderboard.html')
