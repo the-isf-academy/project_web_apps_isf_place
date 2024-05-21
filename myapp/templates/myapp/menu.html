@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ISF/place Menu</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/menu.css">
+    <script>
+        window.onload = function() {
+            var houseSelect = document.getElementById('house');
+            var menu = document.querySelector('.menu');
+
+            houseSelect.addEventListener('change', function() {
+                if (this.value) {
+                    menu.style.display = 'block'; // Show the menu when a house is selected
+                } else {
+                    menu.style.display = 'none'; // Hide the menu when the selection is cleared
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Welcome to ISF/place</h1>
+        <ul class="menu">
+            <li>
+                <a href="{% url 'myapp:home' %}">
+                    <span>Canvas</span>
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'myapp:leaderboard' %}">
+                    <span>Leaderboard</span>
+                    <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+        <form>
+            <label for="house">Choose a house:</label>
+            <select id="house" name="house">
+                <option selected disabled>Select a house</option>
+                <option value="earth">Earth</option>
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="wood">Wood</option>
+                <option value="metal">Metal</option>
+            </select>
+        </form>
+    </div>
+
+</body>
+</html>

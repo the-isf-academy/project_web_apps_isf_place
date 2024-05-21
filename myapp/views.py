@@ -10,6 +10,9 @@ def index(request):
 def leaderboard(request):
     return render(request, 'myapp/leaderboard.html')
 
+def menu(request):
+    return render(request, 'myapp/menu.html')
+
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json

@@ -496,23 +496,15 @@ function updateColorPreview(event) {
     // Get the color value
     var color = parent.style.color;
 
-    // Create a new div
-    var div = document.createElement('div');
-
-    // Set the div's text content to the color value
-    div.textContent = color;
-
-    // Append the div to the body
-    document.body.appendChild(div);
 
     // Parse the RGB color value
     var rgb = color.match(/\d+/g);
-    console.log(document.getElementById("tile_id").value)
+    var tile_id = parseInt(parent.getAttribute("data-id"));
+    console.log(tile_id)
     // var element = document.getElementById("tile_id").value;
-    var id = 1;
     // var id = element.dataset.id;
     // Send the new color data to the server
-    fetch(`/update-color/${id}`, {
+    fetch(`/update-color/${tile_id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -5,7 +5,7 @@
 <style>
   .grid {
     display: grid;
-    grid-template-columns: repeat(40, 1fr);
+    grid-template-columns: repeat(50, 1fr);
   }
 
   .square {
@@ -27,10 +27,9 @@
 <h1>ISF/Place</h1>
 <div class="grid">
   {% for tile in grid %}
-    <div class="clr-field" style="color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }});">
+  <div class="clr-field" style="color: rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }});" data-id="{{ tile.id }}">
       <button type="button" aria-labelledby="clr-open-label"></button>
       <input class="hidden-input" type="text" value="rgb({{ tile.r }}, {{ tile.g }}, {{ tile.b }})" data-coloris="">
-      <input id="tile_id" name="tile_id" type="hidden" value="{{ tile.id }}">
     </div>
     {% endfor %}
 </div>
